@@ -10,8 +10,8 @@
 import Foundation
 import CoreData
 
-
-extension Order: Identifiable {
+// Protocolo Identifiable es para identificar univocamente cada item
+extension Order: Identifiable{
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Order> {
         return NSFetchRequest<Order>(entityName: "Order")
@@ -22,16 +22,15 @@ extension Order: Identifiable {
     @NSManaged public var pizzaType: String
     @NSManaged public var status: String
     @NSManaged public var tableNumber: String
-    
-    var OrderStatus: Status {
-        set { status = newValue.rawValue}
-        get { Status(rawValue: status) ?? .pending }// pending valor por defecto si no tiene status
-    }
 
+    var orderStatus: Status{
+        set{ status = newValue.rawValue }
+        get{ Status(rawValue: status) ?? .pending }
+    }
 }
-enum Status: String{
+
+enum Status : String{
     case pending = "Pending"
     case preparing = "Preparing"
     case completed = "Completed"
-    
 }
