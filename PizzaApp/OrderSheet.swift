@@ -37,7 +37,9 @@ struct OrderSheet: View {
                 Button("Add Order"){
                     guard self.tableNumber != "" else { return }
                     
-                    // Insertamos Orden
+                    // Se inserta la orden
+                    
+                    
                     let newOrder = Order(context: self.managedObjectContext)
                     newOrder.id = UUID()
                     newOrder.pizzaType = self.pizzaTypes[self.selectedPizzaIndex]
